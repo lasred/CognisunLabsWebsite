@@ -1,0 +1,103 @@
+/* Process Navigation Styles */
+.process-step {
+    min-height: 300px;
+}
+
+#progress-bar {
+    left: -30px;
+    height: 100%;
+}
+
+#progress-line {
+    transition: height 0.5s ease;
+}
+
+#progress-dot {
+    transition: top 0.5s ease;
+    z-index: 10;
+}
+
+/* Button hover effects */
+#prev-step:not(:disabled):hover svg,
+#next-step:not(:disabled):hover svg {
+    transform: translateX(-2px);
+}
+
+#next-step:not(:disabled):hover svg {
+    transform: translateX(2px);
+}
+
+/* Animation for step transitions */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
+
+/* Hide all progress dots */
+#process div[class*="rounded-full"][class*="w-4"][class*="h-4"]:not([class*="w-40"]),
+#process div[class*="rounded-full"][class*="w-3"][class*="h-3"],
+#process div[class*="rounded-full"][class*="w-2"][class*="h-2"],
+#process div[class*="bg-purple"][class*="rounded-full"],
+#process div[class*="bg-gradient"][class*="rounded-full"]:not([class*="w-64"]) {
+    display: none !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    #progress-bar {
+        display: none;
+    }
+    
+    .process-step {
+        min-height: auto;
+    }
+    
+    #prev-step span,
+    #next-step span {
+        display: none;
+    }
+    
+    #prev-step,
+    #next-step {
+        padding: 0.75rem;
+    }
+}
